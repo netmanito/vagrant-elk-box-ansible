@@ -57,6 +57,19 @@ Controlled by
 
 Some sample Logstash data is installed on provisioning. Reading in log lines from include/example-logs/testlog
 
+### Packetbeat
+Installed via debian package, started on boot.
+Controlled by
+
+```bash
+
+ sudo service packetbeat
+
+```
+
+It automatically creates a packetbeat-\* index on elasticsearch so you can see data the first time it runs.
+
+
 ### Kibana 
 Controlled by
 
