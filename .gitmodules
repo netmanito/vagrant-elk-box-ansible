@@ -14,9 +14,14 @@
 	branch = master
 [submodule "provisioning/roles/ansible-kibana3"]
 	path = provisioning/roles/ansible-kibana3
-	url = https://github.com/deimosfr/ansible-kibana.git
+	url = https://github.com/netmanito/ansible-kibana3.git
 	ignore = dirty
 [submodule "provisioning/roles/ansible-es-packetbeat"]
 	path = provisioning/roles/ansible-es-packetbeat
 	url = https://github.com/mrlesmithjr/ansible-es-packetbeat.git
 	ignore = dirty
+[submodule "provisioning/roles/ansible-role-nginx"]
+	path = provisioning/roles/ansible-role-nginx
+	url =  https://github.com/jdauphant/ansible-role-nginx.git 
+	ignore = dirty
+
