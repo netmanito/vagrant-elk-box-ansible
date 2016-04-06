@@ -22,5 +22,7 @@ elasticsearch_plugins:
 elasticsearch_plugin_marvel_version: latest
 elasticsearch_plugin_marvel_agent_enabled: "false"
 elasticsearch_http_cors_enabled: "true"
-elasticsearch_http_cors_allow_origin: "http://localhost:5601"
+elasticsearch_http_cors_allow_origin: "\"*\""
 elasticsearch_pid_dir: /run/elasticsearch
+elasticsearch_http_cors_allow-methods : "OPTIONS, HEAD, GET, POST, PUT, DELETE"
+elasticsearch_http_cors_allow-headers : "X-Requested-With,X-Auth-Token,Content-Type, Content-Length"

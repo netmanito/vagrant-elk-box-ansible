@@ -38,3 +38,32 @@
   tags: packetbeat
   roles:
     - ansible-es-packetbeat
+
+#########################
+# Nginx install #
+#########################
+- hosts: master
+  sudo: true
+  tags: nginx
+  roles:
+    - ansible-role-nginx
+
+
+#########################
+# Kibana3 install #
+#########################
+
+- hosts: master
+  sudo: true
+  tags: kibana3
+  roles:
+    - ansible-kibana3
+    - role: ansible-role-nginx
+      nginx_sites:
+        - server:
+           file_name: kibana.domain
+           server_name: localhost
+           listen: 80
+           root: /usr/share/nginx/www/kibana/src
+           location1: {name: /, try_files: "$uri $uri/ /index.html"}
+
