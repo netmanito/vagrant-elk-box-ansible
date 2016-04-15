@@ -11,11 +11,9 @@ Other providers, like VMWare may work, not tested!
 This repo uses git submodules.
 To clone the repo, use the --recurse-submodules option.  The submodules contain role definitions and nothing will work without that, unfortunately.  
 
-### ATENTION !
-Currently, my master branch is not working yet as I'm still testing all the environment.
 If you want to try my current working branch, please clone as follows:
 
-	git clone --recurse-submodules -b packetbeat --single-branch https://github.com/netmanito/vagrant-elk-box-ansible.git
+	git clone --recurse-submodules https://github.com/netmanito/vagrant-elk-box-ansible.git
 
 The original repo can be cloned through 
 
@@ -42,7 +40,27 @@ Kibana3 at [http://localhost:8080/](http://localhost:8080/)
 
 Kibana4 at [http://localhost:5601/](http://localhost:5601/)
 
+Elastic-HQ at [http://localhost:9200/_plugin/hq/](http://localhost:9200/_plugin/hq/)
+
 Sense, the wonderful elasticsearch query machine is found at [http://localhost:5601/app/sense](http://localhost:5601/app/sense)
+
+Checkout indices created by looking at 
+
+[http://localhost:9200/_cat/indices?v](http://localhost:9200/_cat/indices?v)
+
+You should see at a first boot at least 2 indices,
+
+	health status index                 pri rep docs.count docs.deleted store.size pri.store.size 
+yellow open   .kibana                 1   1        103            0     83.1kb         83.1kb 
+green  open   packetbeat-YYYY.MM.DD   1   0         83            0    106.1kb        106.1kb 
+
+Then you can run send_log.sh from example-logs directory and check if logstash is running too.
+
+	bash send_log.sh
+
+You should later see if you refresh [http://localhost:9200/_cat/indices?v](http://localhost:9200/_cat/indices?v) a new index from logstash
+
+	green  open   logstash-YYYY.MM.DD     1   0          0            0       130b           130b 
 
 
 ### Elasticsearch
