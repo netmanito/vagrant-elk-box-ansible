@@ -51,10 +51,10 @@ Checkout indices created by looking at
 You should see at a first boot at least 2 indices,
 
 	health status index                 pri rep docs.count docs.deleted store.size pri.store.size 
-yellow open   .kibana                 1   1        103            0     83.1kb         83.1kb 
-green  open   packetbeat-YYYY.MM.DD   1   0         83            0    106.1kb        106.1kb 
+	yellow open   .kibana                 1   1        103            0     83.1kb         83.1kb 
+	green  open   packetbeat-YYYY.MM.DD   1   0         83            0    106.1kb        106.1kb 
 
-Then you can run send_log.sh from example-logs directory and check if logstash is running too.
+Then you can run **send_log.sh** from *include/example-logs* directory and check if logstash is running too.
 
 	bash send_log.sh
 
