@@ -10,12 +10,16 @@ Other providers, like VMWare may work, not tested!
 ## Checkout the project
 This repo uses git submodules.
 To clone the repo, use the --recurse-submodules option.  The submodules contain role definitions and nothing will work without that, unfortunately.  
-Currently, my master branch is not working yet as I'm still testing all the environment.
+
+**Packetbeat** branch is experimental and might be sometimes broken.
+
+This branch is used to add features and try them before adding them on master branch.
+
 If you want to try my current working branch, please clone as follows:
 
 	git clone --recurse-submodules -b packetbeat --single-branch https://github.com/netmanito/vagrant-elk-box-ansible.git
 
-The original repo can be cloned through 
+The original repo from my fork can be cloned through 
 
     git clone --recurse-submodules  https://github.com/comperiosearch/vagrant-elk-box-ansible.git
 
