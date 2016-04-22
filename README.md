@@ -15,7 +15,7 @@ To clone the repo, use the --recurse-submodules option.  The submodules contain 
 
 This branch is used to add features and try them before adding them on master branch.
 
-If you want to try my current working branch, please clone as follows:
+If you want to try this branch, please clone as follows:
 
 	git clone --recurse-submodules -b packetbeat --single-branch https://github.com/netmanito/vagrant-elk-box-ansible.git
 
