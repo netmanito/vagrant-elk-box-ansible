@@ -13,6 +13,22 @@ logstash_inputs: |
   }
 logstash_filters: |
 
+  if [latitude] and [longitude] {
+     mutate {
+       add_field => [ "[geoip.location]", "%{longitude}" ]
+       add_field => [ "[geoip.location]", "%{latitude}" ]
+     }
+     mutate {
+       convert => [ "[geoip.location]", "float" ]
+     }
+  }
+
+  geoip {
+   source => "geoip.location"
+   target => "geoip"
+   database =>"/usr/share/GeoIP/GeoLiteCity.dat"
+  }
+
 logstash_outputs: |
  file {
     path => "/var/log/logstash/output.log"
