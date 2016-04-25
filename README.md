@@ -44,7 +44,27 @@ Kibana3 at [http://localhost:8080/](http://localhost:8080/)
 
 Kibana4 at [http://localhost:5601/](http://localhost:5601/)
 
+Elastic-HQ at [http://localhost:9200/_plugin/hq/](http://localhost:9200/_plugin/hq/)
+
 Sense, the wonderful elasticsearch query machine is found at [http://localhost:5601/app/sense](http://localhost:5601/app/sense)
+
+Checkout indices created by looking at 
+
+[http://localhost:9200/_cat/indices?v](http://localhost:9200/_cat/indices?v)
+
+You should see at a first boot at least 2 indices,
+
+	health status index                 pri rep docs.count docs.deleted store.size pri.store.size 
+	yellow open   .kibana                 1   1        103            0     83.1kb         83.1kb 
+	green  open   packetbeat-YYYY.MM.DD   1   0         83            0    106.1kb        106.1kb 
+
+Then you can run **send_log.sh** from *include/example-logs* directory and check if logstash is running too.
+
+	bash send_log.sh
+
+You should later see if you refresh [http://localhost:9200/_cat/indices?v](http://localhost:9200/_cat/indices?v) a new index from logstash
+
+	green  open   logstash-YYYY.MM.DD     1   0          0            0       130b           130b 
 
 
 ### Elasticsearch
@@ -71,7 +91,10 @@ Controlled by
 
 Some sample Logstash data is installed on provisioning. Reading in log lines from **include/example-logs/testlog**
 
-There's a script at **include/example-logs/send_log.sh** which includes data on testlog file with current date so you can have **on time** data as soon as you start. 
+There's a script at **include/example-logs/send_log.sh** which includes data on testlog file with current date so you can have **on time** data as soon as you start.
+
+Geoip configuration has been included to work with GeoLiteCity.dat in kibana3.
+
 
 ### Packetbeat
 Installed via debian package, started on boot.
@@ -84,6 +107,8 @@ Controlled by
 ```
 
 It automatically creates a packetbeat-\* index on elasticsearch so you can see data the first time it runs.
+
+It also preloads some dashboards on kibana4, you can find them at [http://localhost:5601/app/kibana#/dashboard/Packetbeat-Dashboard](http://localhost:5601/app/kibana#/dashboard/Packetbeat-Dashboard)
 
 
 ### Kibana4
@@ -99,7 +124,17 @@ sudo service kibana
 
 Added as I still work with this version, it downloads directly from [kibana-community/kibana3](https://github.com/kibana-community/kibana3.git) repo.
 
-It works through nginx as a default configuration on port 80 in the **vagrant-box** but forwarded to http://localhost:8080
+It works through nginx as a default configuration on port 80 in the **vagrant-box** but forwarded to http://localhost:8080 (see Vagrantfile)
+
+It also installs geoip-database-contrib which includes **GeoLiteCity.dat** file.
+
+You can check 2 prebuilt dashboards, one for logstash index and other which includes **_all** indices from elasticsearch
+
+[Logstash dashborad](http://localhost:8080/#/dashboard/file/logstash.json)
+
+
+[All indices dashboard](http://localhost:8080/#/dashboard/file/guided.json)
+
 
 ### Nginx
 
