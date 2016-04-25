@@ -24,7 +24,3 @@
 	path = provisioning/roles/ansible-role-nginx
 	url =  https://github.com/jdauphant/ansible-role-nginx.git 
 	ignore = dirty
-[submodule "provisioning/roles/ansible-role-topbeat"]
-	path = provisioning/roles/ansible-role-topbeat
-	url = https://github.com/marji/ansible-role-topbeat.git
-	ignore = dirty
