@@ -1,4 +1,4 @@
-This vagrant box installs elasticsearch 2.1, logstash 2.1, kibana3 with nginx, packetbeats and kibana 4.3
+This vagrant box installs elasticsearch 2.1, logstash 2.1, kibana3 with nginx, packetbeats, topbeat and kibana 4.3
 
 This repo has been updated from the [original](https://github.com/comperiosearch/vagrant-elk-box-ansible.git) which includes elasticsearch 2.1, logstash 2.1 and kibana 4.3 and was meant to replace the old [Vagrant ELK box](https://github.com/comperiosearch/vagrant-elk-box),  where provisioning by puppet has been replaced by ansible.
 
@@ -109,6 +109,18 @@ Controlled by
 It automatically creates a packetbeat-\* index on elasticsearch so you can see data the first time it runs.
 
 It also preloads some dashboards on kibana4, you can find them at [http://localhost:5601/app/kibana#/dashboard/Packetbeat-Dashboard](http://localhost:5601/app/kibana#/dashboard/Packetbeat-Dashboard)
+
+### Topbeat
+Installed via debian package, started on boot.
+Controlled by
+
+```bash
+
+ sudo service topbeat
+
+```
+
+It automatically creates a topbeat-\* index on elasticsearch so you can see data the first time it runs.
 
 
 ### Kibana4
